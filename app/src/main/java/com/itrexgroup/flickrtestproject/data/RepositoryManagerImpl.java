@@ -11,6 +11,7 @@ public class RepositoryManagerImpl implements RepositoryManager {
         this.serviceNetwork = serviceNetwork;
     }
 
+    @Override
     public ServiceNetwork getServiceNetwork() {
         return serviceNetwork;
     }

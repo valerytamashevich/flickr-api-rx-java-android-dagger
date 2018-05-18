@@ -5,7 +5,7 @@ import android.content.Context;
 import com.itrexgroup.flickrtestproject.FlickrTestProjectApplication;
 import com.itrexgroup.flickrtestproject.data.RepositoryManager;
 import com.itrexgroup.flickrtestproject.data.RepositoryManagerImpl;
-import com.itrexgroup.flickrtestproject.ui.flickrpictures.FlickrPicturesActivity;
+import com.itrexgroup.flickrtestproject.ui.flickrpictures.FlickrPhotosActivity;
 
 import javax.inject.Singleton;
 
@@ -29,5 +29,5 @@ public abstract class ApplicationModule {
     }
 
     @ContributesAndroidInjector
-    abstract FlickrPicturesActivity componentFlickrPicturesInjector();
+    abstract FlickrPhotosActivity componentFlickrPicturesInjector();
 }

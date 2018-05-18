@@ -34,7 +34,9 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(HttpUrl baseUrl, Converter.Factory converterFactory, CallAdapter.Factory callAdapterFactory) {
+    Retrofit provideRetrofit(HttpUrl baseUrl,
+                             Converter.Factory converterFactory,
+                             CallAdapter.Factory callAdapterFactory) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(converterFactory)

@@ -18,6 +18,7 @@ public abstract class MVPActivity<PRESENTER extends BasePresenter, VIEW extends 
         if (presenter != null) {
             presenter.setView(getView());
         }
+        presenter.onCreate();
     }
 
     @Override
