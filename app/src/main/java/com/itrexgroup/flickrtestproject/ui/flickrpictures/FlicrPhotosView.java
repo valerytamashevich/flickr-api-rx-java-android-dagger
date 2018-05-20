@@ -9,5 +9,5 @@ public interface FlicrPhotosView extends View {
 
     void updatePhotos(List<Photo> photos);
 
-    void showErrorMessage(String message);
+    void showErrorMessage(int messageId);
 }

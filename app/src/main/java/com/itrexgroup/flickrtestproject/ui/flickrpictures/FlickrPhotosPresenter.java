@@ -1,7 +1,6 @@
 package com.itrexgroup.flickrtestproject.ui.flickrpictures;
 
-import android.util.Log;
-
+import com.itrexgroup.flickrtestproject.R;
 import com.itrexgroup.flickrtestproject.data.RepositoryManager;
 import com.itrexgroup.flickrtestproject.data.model.ResponseRecentPhotos;
 import com.itrexgroup.flickrtestproject.ui.base.BasePresenter;
@@ -14,6 +13,7 @@ import io.reactivex.schedulers.Schedulers;
 public class FlickrPhotosPresenter extends BasePresenter<FlicrPhotosView> {
 
     private static final int INIT_PAGE_NUMBER = 1;
+    private static final String OK_STATUS = "ok";
 
     private int pageNumber = INIT_PAGE_NUMBER;
 
@@ -34,13 +34,13 @@ public class FlickrPhotosPresenter extends BasePresenter<FlicrPhotosView> {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 response -> {
-                                    if (response.getStat().equalsIgnoreCase("ok")) {
+                                    if (response.getStat().equalsIgnoreCase(OK_STATUS)) {
                                         savePageAndUpdatePhotos(response);
                                     } else {
-                                        getView().showErrorMessage("");
+                                        getView().showErrorMessage(R.string.photo_fetching_error);
                                     }
                                 },
-                                error -> Log.e("VALERA", "onError: " + error)
+                                throwable -> getView().showErrorMessage(R.string.photo_fetching_error)
                         )
         );
     }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.itrexgroup.flickrtestproject.R;
 import com.itrexgroup.flickrtestproject.data.model.Photo;
@@ -62,8 +63,8 @@ public class FlickrPhotosActivity extends MVPActivity<FlickrPhotosPresenter, Fli
     }
 
     @Override
-    public void showErrorMessage(String message) {
-
+    public void showErrorMessage(int messageId) {
+        Toast.makeText(this, messageId, Toast.LENGTH_SHORT).show();
     }
 
     @Override

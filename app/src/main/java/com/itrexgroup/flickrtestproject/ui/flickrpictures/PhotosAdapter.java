@@ -11,12 +11,11 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.itrexgroup.flickrtestproject.R;
 import com.itrexgroup.flickrtestproject.data.model.Photo;
+import com.itrexgroup.flickrtestproject.utils.Constant;
 
 import java.util.List;
 
 class PhotosAdapter extends PagerAdapter {
-
-    private static final String TAG = PhotosAdapter.class.getName();
 
     private final List<Photo> photoList;
     private Callback callback;
@@ -28,13 +27,6 @@ class PhotosAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
-        if (position == photoList.size() - 1) {
-            if (callback != null) {
-                callback.loadPhotos();
-            }
-        }
-
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.flicr_photo_layout, null);
         ImageView photoView = (ImageView) view.findViewById(R.id.photo_image_view);
 
@@ -43,7 +35,7 @@ class PhotosAdapter extends PagerAdapter {
         photoView.setContentDescription(photo.getTitle());
 
         String address = String.format(
-                "https://farm%s.staticflickr.com/%s/%s_%s.jpg",
+                Constant.PHOTO_ADDRESS_PATTERN,
                 photo.getFarm(),
                 photo.getServer(),
                 photo.getId(),
@@ -56,7 +48,17 @@ class PhotosAdapter extends PagerAdapter {
 
         container.addView(view);
 
+        checkForLoadingNewPhotos(position);
+
         return view;
+    }
+
+    private void checkForLoadingNewPhotos(int position) {
+        if (position == photoList.size() - 1) {
+            if (callback != null) {
+                callback.loadPhotos();
+            }
+        }
     }
 
     @Override
