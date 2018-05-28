@@ -47,6 +47,6 @@ public class FlickrPhotosPresenter extends BasePresenter<FlicrPhotosView> {
 
     private void savePageAndUpdatePhotos(ResponseRecentPhotos response) {
         pageNumber = response.getPhotos().getPage() + 1;
-        getView().updatePhotos(response.getPhotos().getPhoto());
+        getView().updatePhotos(response.getPhotos().getPhotos());
     }
 }
